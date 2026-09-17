@@ -17,6 +17,7 @@ public class Main {
 		System.out.println("=== SISTEMA DA LOJA ===");
 		System.out.println("1 - Cadastrar produto");
 		System.out.println("2 - Listar produtos");
+		System.out.println("3 - Buscar produto");
 		System.out.println("0 - Sair");
 		System.out.println("Escolha uma opção");
 		
@@ -28,8 +29,10 @@ public class Main {
 			System.out.println("Digite o código do produto: ");
 			int codigo = sc.nextInt();
 			
+			sc.nextLine();
+			
 			System.out.println("Digite o nome do produto: ");
-			String nome = sc.next();
+			String nome = sc.nextLine();
 			
 			System.out.println("Digite o preço do produto: ");
 			double preco = sc.nextDouble();
@@ -37,10 +40,27 @@ public class Main {
 			System.out.println("Digite a quantidade: ");
 			int quantidadeEstoque = sc.nextInt();
 			
+			Produto produto = new Produto(codigo, nome, preco, quantidadeEstoque);
+			produtos.add(produto);
+			
+			System.out.println("Produto cadastrado com sucesso");
 			break;
 			
 		case 2:
-			System.out.println("Listar produtos");
+			if (produtos.isEmpty()) {
+				System.out.println("Nenhum item cadastrado.");
+				
+			}else {
+				System.out.println("O sistema tem um total de " + produtos.size() + " produto(s).");
+				for (Produto p : produtos) {
+					System.out.println(p);
+			}
+			}
+			break;
+			
+		case 3:
+			System.out.println("Digite o código do produto: ");
+		    int codigoBusca = sc.nextInt();
 			break;
 			
 		case 0:
